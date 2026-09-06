@@ -112,21 +112,21 @@ Use the assigned class values or values approved by your instructor. Show the su
    text
 Inputs:
 Cm0 = 0.04
-Cm_alpha = -0.8* 1/rad
-alpha = 2.86 deg
-delta_alpha = +2.00 deg
+Cm_alpha = -0.8 (1/rad)
+alpha = 2.86 (deg)
+delta_alpha = +2.00 (deg)
 
 Angle conversion:
-alpha_rad = 2.86 * (pi / 180) = 0.0499164 rad
-delta_alpha_rad = 2.00 * (pi / 180) = 0.0349066 rad
+alpha_rad = 2.86 * (pi / 180) = 0.0499164 (rad)
+delta_alpha_rad = 2.00 * (pi / 180) = 0.0349066 (rad)
 
 Current pitching-moment coefficient:
 Cm(alpha) = 0.04 + (-0.8 * 0.0499164) = 0.04 - 0.0399331 = 0.0000669
 
 
 Trim angle:
-alpha_trim_rad = -0.04 / -0.8 = 0.05 rad
-alpha_trim_deg = 0.05 * (180 / pi) = 2.8647890 deg
+alpha_trim_rad = -0.04 / -0.8 = 0.05 (rad)
+alpha_trim_deg = 0.05 * (180 / pi) = 2.8647890 (deg)
 
 Disturbance response:
 delta_Cm = -0.8 * 0.0349066 = -0.0279253
@@ -145,7 +145,10 @@ Define all three cases before implementation. Include exact inputs, expected out
 Use your Section 8 reference calculation.
 
    text
- `[COMPLETE]`
+ Since |Cm(alpha)| is more than 1e-6(set trim/not trim threshold), the aircraft is  not trimmed.
+
+ From Cm-alpha = delta_Cm/delta_alpha_rad, we know that if delta_Cm/delta_alpha_rad is negative the aircraft tends to correct itself from change in alpha.
+ Since -0.0279253 / 0.0349066 is negative; therefore, the aircraft has restoring tendency.
    
 
 ### 9.2 Behavioral case
@@ -153,7 +156,7 @@ Use your Section 8 reference calculation.
 Change one input and state the exact trend or sign that must result.
 
    text
- `[COMPLETE]`
+ Change Cm(alpha) to positive value of 0.8,leave other value the same, the aircraft will have destabilizing tendency.
    
 
 ### 9.3 Boundary or sanity case
@@ -161,7 +164,8 @@ Change one input and state the exact trend or sign that must result.
 Use an informative boundary such as zero slope, zero disturbance, or the trim condition. State the exact behavior expected and why division by zero or a false physical claim must not occur.
 
    text
- `[COMPLETE]`
+ 1 as disturbance angle increases, more error will occur. The model of stability in this excercise doesn't not account for extra moment at high AoA of airfoil or nonlinear Cmalpha.
+ 2 as delta_alpha approaches 0, we will have a case of  division by 0.
    
 
 ## 10. Feature Requirements
@@ -197,7 +201,7 @@ Do not modify any existing file.
 In one or two sentences, state what decision the completed feature will support and what it cannot establish.
 
    text
- `[COMPLETE]`
+ This model can display aircraft's static stability at low delta alpha. It does not cover dynamic stability nor high delta alpha case.
    
 
 ---
@@ -228,7 +232,7 @@ No code has been generated yet.
 Reply exactly  APPROVE ENGINEERING INTERPRETATION  to authorize code generation, or describe the engineering correction needed.
    
 
-Use only this completed specification. Do not silently repair, complete, or invent missing engineering information. If a section still contains   `[COMPLETE]` ,  [SHOW WORK] , a conflict, or insufficient detail, identify the issue and state that approval cannot proceed.
+Use only this completed specification. Do not silently repair, complete, or invent missing engineering information. If a section still contains   `[COMPLETE]` , `[SHOW WORK]`  , a conflict, or insufficient detail, identify the issue and state that approval cannot proceed.
 
 If the student requests a correction, return a complete revised Implementation Interpretation and request approval again. Do not generate code in the correction response.
 
